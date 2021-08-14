@@ -1,0 +1,141 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="DFC14FFF-1066-92E5-7C82-7ECF19AEA4E2" name="VENDAS">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 23:53:24 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<shortName>VND</shortName>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="PK_VND" id="D81C3A5B-B69C-0D2E-72E2-7E50BF797CD6">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 23:53:40 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="vnd_data" id="0ADAE0A3-B231-37A0-0004-674290F5200C">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 23:53:53 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="vnd_total" id="C1AB6CA5-806F-8ABF-E0D9-45509705B914">
+<createdBy>user</createdBy>
+<createdTime>2021-08-14 00:03:04 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="vnd_icms_total" id="EED62EB5-DF98-EDA6-B64C-348FEE218D62">
+<createdBy>user</createdBy>
+<createdTime>2021-08-14 00:05:40 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="FK_VND_CLS" id="DF0C9887-3328-17C0-5BD4-4B9EC645A7AC">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 23:54:53 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="FK_VND_FNO" id="259245D2-3134-CD6C-7E58-36AE6A190EDB">
+<createdBy>user</createdBy>
+<createdTime>2021-08-14 00:00:21 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="FK_VND_LVO" id="694CD555-FC60-72BC-B39C-E936492672B9">
+<createdBy>user</createdBy>
+<createdTime>2021-08-14 00:00:34 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PK_FNO" id="8CE0589E-7019-222B-6C84-05BCEEF8DFCB">
+<createdBy>user</createdBy>
+<createdTime>2021-08-14 00:26:47 UTC</createdTime>
+<generatorID>5EC714F1-C022-2B9A-B92E-3390FBDE8650</generatorID>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<referedAttribute>E7FAB8E0-4FC1-5CEA-A926-6B0B6B704A71</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="2170C9B1-E9A5-D984-1CC0-E46641AD5674" name="VENDAS PK">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 23:53:51 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>D81C3A5B-B69C-0D2E-72E2-7E50BF797CD6</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

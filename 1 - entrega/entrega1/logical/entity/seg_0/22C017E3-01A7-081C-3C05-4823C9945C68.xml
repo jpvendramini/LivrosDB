@@ -1,0 +1,189 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="22C017E3-01A7-081C-3C05-4823C9945C68" name="LIVROS">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 22:57:17 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<shortName>LVO</shortName>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="PK_LVO" id="12D2F246-BF6A-2B14-3131-04F9F642E24A">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 23:22:14 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="lvo_titulo" id="2E329C20-BF3F-D9C1-902A-064230DD9C50">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 23:02:40 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>45</dataTypeSize>
+<ownDataTypeParameters>45,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="lvo_edicao" id="7F7289ED-0501-23D8-9F4E-6437C02E92A5">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 23:08:50 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="lvo_volume" id="ACE4AB01-5DC3-CEBB-3909-5E9638B6B377">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 23:11:18 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="lvo_isbn" id="7CAAE9BA-E4DA-8FA0-2A44-A41264E9C6A5">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 23:12:08 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="lvo_preco_capa" id="F8C2A4C4-CB35-D180-EE84-55591A7ACD91">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 23:19:54 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="lvo_preco_venda" id="06199F20-9644-6320-B38C-05316B279B6B">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 23:20:45 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="lvo_icms" id="0475C0B6-7F1B-2ED5-3A4D-4DDA04A09803">
+<createdBy>user</createdBy>
+<createdTime>2021-08-14 00:04:22 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="FK_LVO_AUT" id="D23A1BC4-1B60-4A49-8187-0D2E772CDB2B">
+<createdBy>user</createdBy>
+<createdTime>2021-08-14 00:00:56 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="FK_LVO_CTG" id="C07371B7-4D3F-83F9-ABB3-86D07AE4EEF5">
+<createdBy>user</createdBy>
+<createdTime>2021-08-14 00:01:11 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PK_VND" id="0C4A6DD3-EF1F-3BD9-6F6B-60258B29893B">
+<createdBy>user</createdBy>
+<createdTime>2021-08-14 00:25:54 UTC</createdTime>
+<generatorID>9D112658-3EA5-3238-BB8F-F30064FF30AF</generatorID>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<referedAttribute>D81C3A5B-B69C-0D2E-72E2-7E50BF797CD6</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="7D2BF98E-B568-C26A-C660-A80F695DF01B" name="LIVROS PK">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 23:23:12 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>12D2F246-BF6A-2B14-3131-04F9F642E24A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

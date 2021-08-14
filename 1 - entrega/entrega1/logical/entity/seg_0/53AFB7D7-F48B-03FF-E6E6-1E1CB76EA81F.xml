@@ -1,0 +1,79 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="53AFB7D7-F48B-03FF-E6E6-1E1CB76EA81F" name="CATEGORIA">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 23:32:55 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<shortName>CTG</shortName>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="PK_CTG" id="A6A8B315-F3AD-4719-BB21-E09E91E8C1DA">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 23:33:34 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ctg_genero" id="E3E6265A-75C0-4B95-07B2-479071811381">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 23:33:45 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PK_LVO" id="8EF0D14C-977D-0AB5-D74A-0F7BC17EC2C0">
+<createdBy>user</createdBy>
+<createdTime>2021-08-14 00:24:54 UTC</createdTime>
+<generatorID>C7D708C7-2711-9B50-3DD7-5A2AF1837AC7</generatorID>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<referedAttribute>12D2F246-BF6A-2B14-3131-04F9F642E24A</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="4CEB1A6A-2138-3BF1-AEED-94CF032C270E" name="CATEGORIA PK">
+<createdBy>user</createdBy>
+<createdTime>2021-08-13 23:33:43 UTC</createdTime>
+<ownerDesignName>entrega1</ownerDesignName>
+<engineerTo>
+<item key="757C9700-6EB7-8CDC-6C7D-F17A12D55365" value="true"/>
+<item key="266021B4-D999-35E2-95CD-7330B0875406" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>A6A8B315-F3AD-4719-BB21-E09E91E8C1DA</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
