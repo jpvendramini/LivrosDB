@@ -1,0 +1,95 @@
+CREATE TABLE autores (
+    aut_id            NUMBER(6) NOT NULL,
+    aut_primeiro_nome VARCHAR2(15) NOT NULL,
+    aut_meio_nome     VARCHAR2(15),
+    aut_ultimo_nome   VARCHAR2(30) NOT NULL
+);
+
+ALTER TABLE autores ADD CONSTRAINT pk_aut PRIMARY KEY ( aut_id );
+
+CREATE TABLE categoria (
+    ctg_id     NUMBER(6) NOT NULL,
+    ctg_genero VARCHAR2(45) NOT NULL
+);
+
+ALTER TABLE categoria ADD CONSTRAINT pk_ctg PRIMARY KEY ( ctg_id );
+
+CREATE TABLE clientes (
+    clt_id            NUMBER(6) NOT NULL,
+    clt_primeiro_nome VARCHAR2(30) NOT NULL,
+    clt_meio_nome     VARCHAR2(15),
+    clt_ultimo_nome   VARCHAR2(30) NOT NULL,
+    cls_identificacao unknown 
+--  ERROR: Datatype UNKNOWN is not allowed 
+
+);
+
+ALTER TABLE clientes ADD CONSTRAINT pk_clt PRIMARY KEY ( clt_id );
+
+CREATE TABLE funcionarios (
+    fnc_id            NUMBER(6) NOT NULL,
+    fnc_primeiro_nome VARCHAR2(30) NOT NULL,
+    fnc_meio_nome     VARCHAR2(15),
+    fnc_ultimo_nome   VARCHAR2(30) NOT NULL,
+    fnc_matricula     VARCHAR2(30) NOT NULL,
+    fnc_cargo         VARCHAR2(20) NOT NULL
+);
+
+ALTER TABLE funcionarios ADD CONSTRAINT pk_fnc PRIMARY KEY ( fnc_id );
+
+CREATE TABLE livros (
+    lvo_id           NUMBER(6) NOT NULL,
+    lvo_titulo       VARCHAR2(45) NOT NULL,
+    lvo_edicao       VARCHAR2(45) NOT NULL,
+    lvo_volume       VARCHAR2(20) NOT NULL,
+    lvo_isbn         NUMBER(13) NOT NULL,
+    lvo_preco_capa   NUMBER,
+    lvo_preco_venda  NUMBER,
+    lvo_icms         NUMBER NOT NULL,
+    autores_aut_id   NUMBER(6) NOT NULL,
+    categoria_ctg_id NUMBER(6) NOT NULL,
+    vendas_vnd_id    NUMBER(6) NOT NULL
+);
+
+ALTER TABLE livros ADD CONSTRAINT pk_lvo PRIMARY KEY ( lvo_id );
+
+CREATE TABLE vendas (
+    vnd_id              NUMBER(6) NOT NULL,
+    vnd_data            DATE NOT NULL,
+    vnd_icms_total      NUMBER,
+    vnd_total           NUMBER,
+    funcionarios_fnc_id NUMBER(6) NOT NULL,
+    clientes_clt_id     NUMBER(6) NOT NULL
+);
+
+CREATE UNIQUE INDEX vendas__idx ON
+    vendas (
+        funcionarios_fnc_id
+    ASC );
+
+CREATE UNIQUE INDEX vendas__idxv1 ON
+    vendas (
+        clientes_clt_id
+    ASC );
+
+ALTER TABLE vendas ADD CONSTRAINT pk_vnd PRIMARY KEY ( vnd_id );
+
+ALTER TABLE livros
+    ADD CONSTRAINT fk_lvo_aut FOREIGN KEY ( autores_aut_id )
+        REFERENCES autores ( aut_id );
+
+ALTER TABLE livros
+    ADD CONSTRAINT fk_lvo_ctg FOREIGN KEY ( categoria_ctg_id )
+        REFERENCES categoria ( ctg_id );
+
+ALTER TABLE livros
+    ADD CONSTRAINT fk_lvo_vnd FOREIGN KEY ( vendas_vnd_id )
+        REFERENCES vendas ( vnd_id );
+
+ALTER TABLE vendas
+    ADD CONSTRAINT fk_vnd_cls FOREIGN KEY ( clientes_clt_id )
+        REFERENCES clientes ( clt_id );
+
+ALTER TABLE vendas
+    ADD CONSTRAINT fk_vnd_fnc FOREIGN KEY ( funcionarios_fnc_id )
+        REFERENCES funcionarios ( fnc_id );
