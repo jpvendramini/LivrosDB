@@ -136,3 +136,78 @@ COMMENT ON COLUMN clientes.clt_primeiro_nome IS 'O primeiro nome do cliente';
 COMMENT ON COLUMN clientes.clt_meio_nome IS 'O nome do meio do cliente';
 COMMENT ON COLUMN clientes.clt_ultimo_nome IS 'O ultimo nome do cliente';
 COMMENT ON COLUMN clientes.clt_identificacao IS 'A identificação do cliente - RG ou CPF';
+
+--Sequences and triggers CLIENTES
+CREATE SEQUENCE sqe_clt NOCACHE;
+
+CREATE TRIGGER tg_seq_clt
+BEFORE INSERT
+ON clientes
+FOR EACH ROW
+BEGIN
+:new.clt_id:=sqe_clt.nextval;
+END;
+/
+
+--Sequences and triggers FUNCIONARIOS
+CREATE SEQUENCE sqe_fnc NOCACHE;
+
+CREATE TRIGGER tg_seq_fnc
+BEFORE INSERT
+ON funcionarios
+FOR EACH ROW
+BEGIN
+:new.fnc_id:=sqe_fnc.nextval;
+END;
+/
+
+--Sequences and triggers CATEGORIAS
+CREATE SEQUENCE sqe_ctg NOCACHE;
+
+CREATE TRIGGER tg_seq_ctg
+BEFORE INSERT
+ON categoria
+FOR EACH ROW
+BEGIN
+:new.ctg_id:=sqe_ctg.nextval;
+END;
+/
+
+
+--Sequences and triggers AUTORES
+CREATE SEQUENCE sqe_aut NOCACHE;
+
+CREATE TRIGGER tg_seq_aut
+BEFORE INSERT
+ON autores
+FOR EACH ROW
+BEGIN
+:new.aut_id:=sqe_aut.nextval;
+END;
+/
+
+--Sequences and triggers VENDAS
+CREATE SEQUENCE seq_vnd nocache;
+
+CREATE TRIGGER tg_seq_vnd
+BEFORE INSERT
+ON vendas
+FOR EACH ROW
+BEGIN
+    seq_vdn.nextval
+    :new.vnd_id := seq_vdn.nextval;
+END;
+/
+
+
+--Sequences and triggers LIVROS
+CREATE SEQUENCE sqe_lvo NOCACHE;
+
+CREATE TRIGGER tg_seq_lvo
+BEFORE INSERT
+ON livros
+FOR EACH ROW
+BEGIN
+:new.lvo_id:=sqe_lvo.nextval;
+END;
+/
