@@ -4,14 +4,28 @@ CREATE TABLE autores (
     aut_meio_nome     VARCHAR2(15),
     aut_ultimo_nome   VARCHAR2(30) NOT NULL
 );
-
+--------------------------------------------------------------------------------
+create trigger tg_hist_aut
+before update or delete on autores
+for each row
+begin
+    insert into h_autores values (:old.aut_id, :old.aut_primeiro_nome,:old.aut_meio_nome, :old.aut_ultimo_nome, sysdate ); 
+end;    
+--------------------------------------------------------------------------------
 ALTER TABLE autores ADD CONSTRAINT pk_aut PRIMARY KEY ( aut_id );
 
 CREATE TABLE categoria (
     ctg_id     NUMBER(6) NOT NULL,
     ctg_genero VARCHAR2(45) NOT NULL
 );
-
+--------------------------------------------------------------------------------
+create trigger tg_hist_ctg
+before update or delete on categoria
+for each row
+begin 
+    insert into h_categoria values (:old.ctg_id, :old.ctg_genero, sysdate);
+end;
+--------------------------------------------------------------------------------
 ALTER TABLE categoria ADD CONSTRAINT pk_ctg PRIMARY KEY ( ctg_id );
 
 CREATE TABLE clientes (
@@ -23,6 +37,14 @@ CREATE TABLE clientes (
 --  ERROR: Datatype UNKNOWN is not allowed 
 
 );
+-------------------------------------------------------------------------------
+create trigger tg_hist_clt
+before update or delete on clientes
+for each row
+begin
+    insert into h_clientes values (:old.clt_id, :old.clt_primeiro_nome, :old.clt_meio_nome, :old.clt_ultimo_nome, :old.clt_identicacao, sysdate);
+end;
+--------------------------------------------------------------------------------
 
 ALTER TABLE clientes ADD CONSTRAINT pk_clt PRIMARY KEY ( clt_id );
 
@@ -34,7 +56,14 @@ CREATE TABLE funcionarios (
     fnc_matricula     VARCHAR2(30) NOT NULL,
     fnc_cargo         VARCHAR2(20) NOT NULL
 );
-
+--------------------------------------------------------------------------------
+create trigger tg_hist_fnc
+before update or delete on funcionario
+for each row
+begin
+    insert into h_funcionario values (:old.fnc_id, :old.fnc_primeiro_nome, :old.fnc_meio_nome, :old.fnc_ultimo_nome, :old.fnc_matricula, :old.fnc_cargo, sysdate);
+end;
+--------------------------------------------------------------------------------
 ALTER TABLE funcionarios ADD CONSTRAINT pk_fnc PRIMARY KEY ( fnc_id );
 
 CREATE TABLE livros (
@@ -52,7 +81,14 @@ CREATE TABLE livros (
 );
 
 ALTER TABLE livros ADD CONSTRAINT pk_lvo PRIMARY KEY ( lvo_id );
-
+--------------------------------------------------------------------------------
+create trigger tg_hist_lvo
+before update or delete on livros
+for each row
+begin 
+    insert into h_livros values (:old.lvo_id, :old.lvo_titulo, :old.lvo_edicao, :old.lvo_volume, :old.lvo_isbn, :old.lvo_preco_capa, :old.lvo_preco_venda, :old.lvo_icms, :old.autores_aut_id, :old.categorias_ctg_id, :old.vendas_vnd_id, sysdate);
+end;
+--------------------------------------------------------------------------------
 CREATE TABLE vendas (
     vnd_id              NUMBER(6) NOT NULL,
     vnd_data            DATE NOT NULL,
@@ -61,7 +97,14 @@ CREATE TABLE vendas (
     funcionarios_fnc_id NUMBER(6) NOT NULL,
     clientes_clt_id     NUMBER(6) NOT NULL
 );
-
+--------------------------------------------------------------------------------
+create trigger tg_hist_vnd
+before update or delete on vendas
+for each row 
+begin 
+    insert into h_vendas values (:old.vnd_id, :old.vnd_data, :old.vnd_icms_total, :old.vnd_total, :old.funcionario_fnc_id, :old.clientes_clt_id, sysdate);
+end;
+--------------------------------------------------------------------------------
 CREATE UNIQUE INDEX vendas__idx ON
     vendas (
         funcionarios_fnc_id
@@ -93,7 +136,6 @@ ALTER TABLE vendas
 ALTER TABLE vendas
     ADD CONSTRAINT fk_vnd_fnc FOREIGN KEY ( funcionarios_fnc_id )
         REFERENCES funcionarios ( fnc_id );
-
 
 -- Comments on tables
 COMMENT ON TABLE livros IS 'Armazena as informações do livro';
@@ -136,6 +178,123 @@ COMMENT ON COLUMN clientes.clt_primeiro_nome IS 'O primeiro nome do cliente';
 COMMENT ON COLUMN clientes.clt_meio_nome IS 'O nome do meio do cliente';
 COMMENT ON COLUMN clientes.clt_ultimo_nome IS 'O ultimo nome do cliente';
 COMMENT ON COLUMN clientes.clt_identificacao IS 'A identificação do cliente - RG ou CPF';
+
+
+--HISTORIAMENTO
+create table h_autores (
+    haut_id number(6),
+    haut_primeiro_nome varchar(15),
+    haut_meio_nome varchar(15),
+    haut_ultimo_nome varchar(15),
+    haut_dt_entrada date
+);
+alter table h_autores add constraint PK_HAUT primary key (haut_id);
+--------------------------------------------------------------------------------
+create table h_categoria (
+    hctg_id number(6),
+    hctg_genero varchar(45),
+    hctg_dt_entrada date
+);
+alter table h_categoria add constraint PK_HCTG primary key (hctg_id);
+--------------------------------------------------------------------------------
+create table h_livros (
+    hlvo_id number(6),
+    hlvo_titulo varchar(45),
+    hlvo_edicao varchar(45),
+    hlvo_volume varchar (20),
+    hlvo_isbn number (13),
+    hlvo_preco_capa number,
+    hlvo_preco_venda number,
+    hlvo_icms number,
+    hautores_aut_id number(6),
+    hcategorias_ctg_id number(6),
+    hvendas_vnd_id number,
+    hlvo_dt_entrada date
+);
+alter table h_livros add constraint PK_HLVO primary key (hlvo_id);
+alter table h_livros add constraint FK_HLVO_AUT foreign key (hautores_aut_id) references h_autores(haut_id);
+alter table h_livros add constraint FK_HLVO_CTG foreign key (hcategorias_ctg_id) references h_categoria(hctg_id);
+alter table h_livros add constraint FK_HLVO_VND foreign key (hvendas_vnd_id) references h_vendas(hvnd_id);
+--------------------------------------------------------------------------------
+create table h_funcionario(
+    hfnc_id number (6),
+    hfnc_primeiro_nome varchar (30),
+    hfnc_meio_nome varchar(15),
+    hfnc_ultimo_nome varchar(30),
+    hfnc_matricula varchar (30),
+    hfnc_cargo varchar (20),
+    hfnc_dt_entrada date
+);
+alter table h_funcionario add constraint PK_HFNC primary key (hfnc_id); 
+--------------------------------------------------------------------------------
+create table h_clientes (
+    hclt_id number(6),
+    hclt_primeiro_nome varchar (30),
+    hclt_meio_nome varchar(15),
+    hclt_ultimo_nome varchar(30),
+    hclt_identicacao  varchar(14),
+    hclt_dt_entrada date
+);
+alter table h_clientes add constraint PK_HCLT primary key (hclt_id);
+--------------------------------------------------------------------------------
+create table h_vendas (
+    hvnd_id number(6),
+    hvnd_data date,
+    hvnd_icms_total number,
+    hvnd_total number,
+    hfuncionario_fnc_id number(6),
+    hclientes_clt_id number (6),
+    hvnd_dt_entrada date
+);
+alter table h_vendas add constraint PK_HVND primary key (hvnd_id);
+alter table h_vendas add constraint FK_HVND_FNC foreign key (hfuncionario_fnc_id) references h_funcionario(hfnc_id);
+alter table h_vendas add constraint FK_HVND_CLT foreign key (hclientes_clt_id) references h_clientes(hclt_id);
+
+
+
+-- COMMENTS HISTORIAMENTO
+-- Comments on tables
+COMMENT ON TABLE h_livros IS 'Armazena as informações do histórico da tabela livro';
+COMMENT ON TABLE h_categoria IS 'Armazena as informações do histórico da tabela Genero de cada livro';
+COMMENT ON TABLE h_autores IS 'Armazena as informações do histórico da tabela autor(a) de cada livro';
+COMMENT ON TABLE h_vendas IS 'Armazena o histórico de toda venda realizada bem como cliente e funcionario';
+COMMENT ON TABLE h_funcionarios IS 'Armazena os dados do funcionario';
+COMMENT ON TABLE h_clientes IS 'Armazena o histórico de dados do cliente';
+
+-- Comments on columns
+COMMENT ON COLUMN h_livros.hlvo_id IS 'PK da tabela';
+COMMENT ON COLUMN h_livros.hlvo_titulo IS 'O titulo da obra/livro';
+COMMENT ON COLUMN h_livros.hlvo_edicao IS 'A edicao atual da obra';
+COMMENT ON COLUMN h_livros.hlvo_volume IS 'O volume da obra';
+COMMENT ON COLUMN h_livros.hlvo_isbn IS 'O codigo nacional para identificacao do livro';
+COMMENT ON COLUMN h_livros.hlvo_preco_capa IS 'O preco de capa do livro, i.e. o preço levando em consideração custo fixo e variável para fazer o exemplar';
+COMMENT ON COLUMN h_livros.hlvo_preco_venda IS 'O preço cobrado pela livraria';
+COMMENT ON COLUMN h_livros.hlvo_icms IS 'Imposto cobrado por livro';
+COMMENT ON COLUMN h_livros.hlvo_AUTORES_aut_id IS 'FK que referencia o autor do livro';
+COMMENT ON COLUMN h_livros.hlvo_CATEGORIA_ctg_id IS 'FK que referencia o gênero do livro';
+COMMENT ON COLUMN h_livros.hlvo_VENDAS_vnd_id IS '';
+
+COMMENT ON COLUMN h_autores.haut_id IS 'PK da tabela';
+COMMENT ON COLUMN h_autores.haut_primeiro_nome IS 'O primeiro nome do autor';
+COMMENT ON COLUMN h_autores.haut_meio_nome IS 'O nome do meio do autor (se houver)';
+COMMENT ON COLUMN h_autores.haut_ultimo_nome IS 'O sobrenome do autor';
+
+COMMENT ON COLUMN h_categoria.hctg_id IS 'PK da tabela';
+COMMENT ON COLUMN h_categoria.hctg_genero IS 'O genêro da obra';
+
+COMMENT ON COLUMN h_funcionarios.hfnc_id IS 'PK da tabela';
+COMMENT ON COLUMN h_funcionarios.hfnc_primeiro_nome IS 'O primeiro nome do funcionário';
+COMMENT ON COLUMN h_funcionarios.hfnc_meio_nome IS 'O nome do meio do funcionário';
+COMMENT ON COLUMN h_funcionarios.hfnc_ultimo_nome IS 'O ultimo nome do funcionario';
+COMMENT ON COLUMN h_funcionarios.hfnc_matricula IS 'A matricula do funcionario';
+COMMENT ON COLUMN h_funcionarios.hfnc_cargo IS 'O cargo ocupado pelo funcionario atualmente';
+
+COMMENT ON COLUMN h_clientes.hclt_id IS 'PK da tabela';
+COMMENT ON COLUMN h_clientes.hclt_primeiro_nome IS 'O primeiro nome do cliente';
+COMMENT ON COLUMN h_clientes.hclt_meio_nome IS 'O nome do meio do cliente';
+COMMENT ON COLUMN h_clientes.hclt_ultimo_nome IS 'O ultimo nome do cliente';
+COMMENT ON COLUMN h_clientes.hclt_identificacao IS 'A identificação do cliente - RG ou CPF';
+
 
 --Sequences and triggers CLIENTES
 CREATE SEQUENCE sqe_clt NOCACHE;
